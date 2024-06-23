@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Custom Navigation Tabs</title>
+<style>
+  /* カスタムナビゲーションタブのスタイル */
+  .nav-tabs {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    border-top: 1px solid #ddd; /* ナビゲーションタブの下線 */
+    display: flex;
+  }
+  .nav-item {
+    margin-right: 10px; /* 各タブの間隔 */
+  }
+  .nav-link {
+    text-decoration: none;
+    color: #333; /* リンクの色 */
+    padding: 8px 12px; /* タブのパディング */
+    border: 1px solid transparent;
+    border-radius: 5px;
+  }
+  .nav-link.active {
+    background-color: #007bff; /* アクティブなタブの背景色 */
+    color: #fff; /* アクティブなタブのテキスト色 */
+  }
+  .nav-link.disabled {
+    color: #6c757d; /* 無効なタブのテキスト色 */
+    pointer-events: none; /* 無効なタブはクリックできないようにする */
+  }
+</style>
+</head>
+<body>
+
+<ul class="nav-tabs">
+  <li class="nav-item">
+    <a class="nav-link active" aria-current="page" href="#">Active</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="#">Link</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="#">Link</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link disabled">Disabled</a>
+  </li>
+</ul>
+
+</body>
+</html>

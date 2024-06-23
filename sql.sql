@@ -1,0 +1,2 @@
+INSERT INTO `source` ( `site_id`, `name`, `target_tag`, `title_tag`, `create_at_tag`, `source_url`, `created_at`, `updated_at`, `deleted_at`) VALUES
+(2, '委託販売', '.productlist__section .productlist-list__unit', '.product-list__name', NULL, 'https://mottainai.shop/?mode=srh&sort=n&cid=&keyword=%B0%D1%C2%F7%C8%CE%C7%E4&page=2', '2024-02-21 22:51:26', '2024-02-21 22:51:26', NULL);
