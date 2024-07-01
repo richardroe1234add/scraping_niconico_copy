@@ -23,7 +23,6 @@ const scrapeTags = async () => {
       return links.map(link => {
         const href = link.href;
         const match = href.match(/https:\/\/www\.nicovideo\.jp\/watch_tmp\/sm(\d+)/);
-        console.log(match)
         if (href.includes('https://www.nicovideo.jp/watch_tmp')) {
           return {
             index: index, // liタグのインデックス
@@ -35,17 +34,6 @@ const scrapeTags = async () => {
       }).filter(link => link !== null);
     }).flat();
   });
-
-//   const newsItems = await page.$$eval('ul li a', links => {
-//     return links.map(link => {
-//       const href = link.href;
-//       const match = href.match(/https:\/\/www\.nicovideo\.jp\/watch_tmp\/sm(\d+)/);
-//       return match ? {
-//         title: link.textContent.trim(), // リンクのテキスト
-//         href: match[1] // 正しい形のリンクから番号だけ抽出 (smを除外)
-//       } : null;
-//     }).filter(item => item !== null && item.title !== '');
-//   });
 
   // インデックスを再割り当て
   let currentIndex = -1;
@@ -60,6 +48,7 @@ const scrapeTags = async () => {
       index: currentIndex,
     };
   });
+
   currentIndex = -1;
   currentRealIndex = -1;
   const adjustednewsItems = newsItems.map((item, i, arr) => {
@@ -70,25 +59,19 @@ const scrapeTags = async () => {
     return {
       ...item,
       index: currentIndex,
+      href: item.href.replace('https://www.nicovideo.jp/watch_tmp/sm', '') // ここで指定の部分を削除
     };
   });
-console.log(adjustednewsItems[0])
-console.log(adjustednewsItems[1])
-console.log(adjustednewsItems[2])
-console.log(adjustednewsItems[3])
-console.log(adjustednewsItems[4])
-console.log(adjustednewsItems[5])
-console.log(adjustednewsItems[6])
-console.log(adjustednewsItems[7])
-console.log(adjustednewsItems[8])
-console.log(adjustednewsItems[9])
-console.log(adjustednewsItems[10])
-//   // forEachでadjustedTagItemsを回す
+
+  // デバッグ用出力
+  console.log(adjustednewsItems[0]);
+  console.log(adjustednewsItems[1]);
+  console.log(adjustednewsItems[3]);
+  console.log(adjustednewsItems[4]);
   adjustedTagItems.forEach(item => {
     if(item.index === 8) {
         console.log(`Index: ${item.index}, Text: ${item.text}`);
     }
-    // console.log(`Index: ${item.index}, Text: ${item.text}`);
   });
 
   await browser.close();
